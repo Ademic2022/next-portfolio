@@ -1,4 +1,5 @@
 "use client";
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import {
@@ -33,10 +34,10 @@ const Sidenav = (props) => {
           right: 4,
           zIndex: 99,
           color: "#000",
-          display: { md: "block", xs: "block" },
+          display: { md: "none", xs: "block" },
         }}
       >
-        {mobileOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+        {mobileOpen ? <AiOutlineClose/> : <AiOutlineMenu />}
       </Box>
 
       {mobileOpen ? (
@@ -60,46 +61,57 @@ const Sidenav = (props) => {
               display: "flex",
               width: "75%",
               flexDirection: "column",
-              alignItems: "center",
             }}
           >
             {/* className="w-[75%] flex justify-center items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 ease-in duration-200" */}
             <List component="nav" aria-label="secondary mailbox folder">
               {navItems.map((item, idx) => (
-                // <ListItem key={idx} disablePadding style={{ margin: "15px 0" }}>
-                //   <Link href={item.link}>
-                //     <ListItemAvatar sx={{}}>
-                //       <Box sx={{display:"flex"}}>
-                //         <Avatar
-                //           sx={{
-                //             // backgroundColor: "#fff",
-                //             // display:"flex",
-                //             // m:2,p:2,
-                //             // width: "75%",
-                //             // transition: "transform 0.2s ease-in",
-                //             color: "#000",
-                //             // boxShadow:
-                //             //   "0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 15px rgba(0, 0, 0, 0.18)",
-                //             // "&:hover": {
-                //             //   transform: "scale(1.1)",
-                //             // },
-                //           }}
-                //         >
-                //           {item.icon}
-                //         </Avatar>
-                //         <Typography component="span">{item.name}</Typography>
-                //       </Box>
-                //     </ListItemAvatar>
-                //   </Link>
-                // </ListItem>
-                <ListItem key={idx} disablePadding style={{ margin: "15px 0" }}>
-                  <ListItemIcon>
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.name}
-                  />
-                </ListItem>
+                <Link
+                  href={item.link}
+                  key={idx}
+                  passHref
+                 style={{ textDecoration: "none" }}
+                >
+                  <ListItem
+                    key={idx}
+                    disablePadding
+                    sx={{
+                      margin: "10px auto",
+                      width: "200px",
+                      // height: "200px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      alignContent: "center",
+                      borderRadius: "500px",
+                      backgroundColor: "#f0f0f0",
+                      padding: "16px",
+                      cursor: "pointer",
+                      boxShadow:
+                        "0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 15px rgba(0, 0, 0, 0.18)",
+                      transition: "transition 0.2s ease-in",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{ marginRight: "-30px", alignSelf: "center" }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.name}
+                      sx={{
+                        marginLeft: "-30px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        textAlign: "center",
+                        flex: 1,
+                      }}
+                    />
+                  </ListItem>
+                </Link>
               ))}
             </List>
           </Box>
