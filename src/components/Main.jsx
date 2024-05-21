@@ -4,10 +4,10 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { userInfo } from "../data/user";
 import { TypeAnimation } from "react-type-animation";
-import { createSequenceFromRoles } from "../utils/helperFunction"
+import { createSequenceFromRoles } from "../utils/helperFunction";
 
 const Main = () => {
-  const sequenceFromRoles = createSequenceFromRoles(userInfo.roles, 2000)
+  const sequenceFromRoles = createSequenceFromRoles(userInfo.roles, 2000);
   return (
     <React.Fragment>
       <Box id="main" sx={{ p: 0, m: 0 }}>
@@ -28,34 +28,48 @@ const Main = () => {
           bgcolor: "rgba(255, 255, 255, 0.4)",
         }}
       >
-        <Typography
-          variant="h1"
+        <Box
           sx={{
-            fontSize: { xs: "4xl", sm: "5xl" },
-            fontWeight: "bold",
-            color: "#4b5563",
-          }}
-        >
-          I am {userInfo.name}
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{
+            maxWidth: "700px",
+            margin: "auto",
+            height: "100%",
+            width: "100%",
             display: "flex",
-            fontSize: { xs: "2xl", sm: "3xl" },
-            paddingTop: "4",
-            color: "#4b5563",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: { lg: "flex-start", xs: "center" }
+
           }}
         >
-          I am a{' '}
-          <TypeAnimation
-            sequence={sequenceFromRoles}
-            wrapper="span"
-            cursor={true}
-            sx={{ fontSize: "1em", paddingLeft: "5px" }}
-            repeat={Infinity}
-          />
-        </Typography>
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "2rem", sm: "3rem" },
+              fontWeight: "bold",
+              color: "#4b5563",
+            }}
+          >
+            I&apos;m  {userInfo.name}
+          </Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              display: "flex",
+              fontSize: { xs: "2xl", sm: "3xl" },
+              paddingTop: "1rem",
+              color: "#4b5563",
+            }}
+          >
+            I&apos;m  a&nbsp;
+            <TypeAnimation
+              sequence={sequenceFromRoles}
+              wrapper="span"
+              cursor={true}
+              style={{ fontSize: "1em", paddingLeft: "5px" }}
+              repeat={Infinity}
+            />
+          </Typography>
+        </Box>
       </Box>
     </React.Fragment>
   );
